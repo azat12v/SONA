@@ -1,0 +1,27 @@
+def sum_zero_columns(matrix):
+    total_sum = 0
+    zero_columns = []
+
+    # Поиск столбцов с нулевыми элементами
+    for j in range(len(matrix[0])):  # Проходим по столбцам
+        for i in range(len(matrix)):  # Проходим по строкам
+            if matrix[i][j] == 0:
+                zero_columns.append(j)
+                break  # Выходим из внутреннего цикла, если найден ноль
+
+    # Суммирование элементов в столбцах с нулями
+    for j in set(zero_columns):  # Используем set для уникальных индексов
+        for i in range(len(matrix)):
+            total_sum += matrix[i][j]
+
+    return total_sum
+
+# Пример использования
+matrix = [
+    [1.0, 2.0, 0.0],
+    [4.0, 0.0, 6.0],
+    [7.0, 8.0, 9.0]
+]
+
+result = sum_zero_columns(matrix)
+print(f"Сумма элементов столбцов с нулями: {result}")
